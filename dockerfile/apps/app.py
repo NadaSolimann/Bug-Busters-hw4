@@ -16,7 +16,7 @@ def predict():
      G2 = request.args.get('G2')
      absences = request.args.get('absences')
      data = [[G1],[G2],[absences]]
-     query_df = pd.DataFrame({ 'G1' : pd.Series(G1) ,'G2' : pd.Series(G2) ,'absences' : pd.Series(absences)})
+     query_df = pd.DataFrame({ 'G1' : [G1] ,'G2' : [G2] ,'absences' : [absences]})
      query = pd.get_dummies(query_df)
      prediction = clf.predict(query)
      return jsonify(np.asscalar(prediction))
